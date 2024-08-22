@@ -21,7 +21,7 @@ const ITEMS = [
   { title: 'Title 2', href: 'Title 2' }
 ]
 
-export const SomeOutsideComponent = () => (
+export const SomeParentComponent = () => (
   <>
     <h1>Render props pattern</h1>
     <Grid items={ITEMS} renderProps={(item) => <a href={item.href}>{item.title}</a>} />
