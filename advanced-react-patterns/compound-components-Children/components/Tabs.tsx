@@ -1,4 +1,4 @@
-import { type FC, type ReactNode, Children, ReactElement, useState } from 'react'
+import { type FC, type ReactNode, Children, ReactElement, useState, useCallback } from 'react'
 
 import { Tab, type TabProps } from './Tab'
 
@@ -11,9 +11,10 @@ type Props = {
 
 const Tabs: FC<Props> & ChildrenProps = ({ defaultActiveValue, children }) => {
   const [activeTab, setActiveTab] = useState<number>(defaultActiveValue ?? 0)
-  const handleTabClick = (index: number) => {
+
+  const handleTabClick = useCallback((index: number) => {
     setActiveTab(index)
-  }
+  }, [])
 
   return (
     <div>
