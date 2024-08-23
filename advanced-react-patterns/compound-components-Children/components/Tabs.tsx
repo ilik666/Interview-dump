@@ -12,9 +12,12 @@ type Props = {
 const Tabs: FC<Props> & ChildrenProps = ({ defaultActiveValue, children }) => {
   const [activeTab, setActiveTab] = useState<number>(defaultActiveValue ?? 0)
 
-  const handleTabClick = useCallback((index: number) => {
-    setActiveTab(index)
-  }, [])
+  const handleTabClick = useCallback(
+    (index: number) => () => {
+      setActiveTab(index)
+    },
+    []
+  )
 
   return (
     <div>
@@ -22,7 +25,7 @@ const Tabs: FC<Props> & ChildrenProps = ({ defaultActiveValue, children }) => {
         {Children.map(children, (child, index) => (
           <button
             key={index}
-            onClick={() => handleTabClick(index)}
+            onClick={handleTabClick(index)}
             style={{ fontWeight: activeTab === index ? 'bold' : 'normal' }}
           >
             {(child as ReactElement<TabProps>).props.label}
