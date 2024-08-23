@@ -1,7 +1,8 @@
 import { type FC, type FocusEventHandler, type InputHTMLAttributes, useState } from 'react'
 
-interface TextInputWithFocusProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextInputWithFocusProps {
   onFocusChange?: (isFocused: boolean) => void
+  inputProps?: InputHTMLAttributes<HTMLInputElement>
 }
 
 interface GetInputProps {
@@ -10,7 +11,7 @@ interface GetInputProps {
   [key: string]: any
 }
 
-const TextInputWithFocus: FC<TextInputWithFocusProps> = ({ onFocusChange }) => {
+const TextInputWithFocus: FC<TextInputWithFocusProps> = ({ onFocusChange, inputProps = {} }) => {
   const [isFocused, setIsFocused] = useState(false)
 
   const getInputProps = (props: GetInputProps = {}): InputHTMLAttributes<HTMLInputElement> => {
@@ -32,6 +33,7 @@ const TextInputWithFocus: FC<TextInputWithFocusProps> = ({ onFocusChange }) => {
   return (
     <input
       {...getInputProps({
+        ...inputProps,
         placeholder: isFocused ? 'Focused!' : 'Click to focus'
       })}
     />
