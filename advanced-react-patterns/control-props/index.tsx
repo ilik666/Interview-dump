@@ -13,7 +13,7 @@ export const SomeParentComponent = () => {
         {({ value, handleIncrement, handleDecrement }) => (
           <>
             <Counter.Decrement handleDecrement={handleDecrement} />
-            <Counter.Label>Count: {value}</Counter.Label>
+            <Counter.Count>Count: {value}</Counter.Count>
             <Counter.Increment handleIncrement={handleIncrement} />
           </>
         )}
