@@ -40,7 +40,7 @@ const TextInputWithFocus: FC<TextInputWithFocusProps> = ({ onFocusChange, inputP
   )
 }
 
-export const App: React.FC = () => {
+export const App: FC = () => {
   const handleFocusChange = (isFocused: boolean) => {
     console.log(`Input is ${isFocused ? 'focused' : 'blurred'}`)
   }
